@@ -1,0 +1,7 @@
+simulator/__pycache__/
+**/*.py[cod]
+**/*.so
+.Python
+env/
+venv/
+.venv/

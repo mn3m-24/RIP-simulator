@@ -97,7 +97,15 @@ class DVRouter(DVRouterBase):
         """
 
         ##### Begin Stage 2 #####
-
+        for entry in self.table.values():
+            if (
+                entry.dst != packet.dst  # not same destination
+                or entry.latency >= INFINITY  # latency is ge inf
+            ):
+                continue
+            else:
+                self.send(packet, port=entry.port)
+                break
         ##### End Stage 2 #####
 
     def send_routes(self, force=False, single_port=None):
